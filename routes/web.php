@@ -29,7 +29,11 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
-Route::get('/home', function () {
-    return view('home');
-})->middleware('auth')->name('home');
+Route::get('/app', function () {
+    return view('layouts/app');
+})->middleware('auth')->name('app');
 
+
+Route::get('/posts', function () {
+    return view('layouts/posts');
+});
