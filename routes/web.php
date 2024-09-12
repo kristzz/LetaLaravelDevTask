@@ -15,6 +15,10 @@ use App\Http\Controllers\Auth\LoginController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', function () {
+    return redirect('/login');
+});
+
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
@@ -28,3 +32,4 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/home', function () {
     return view('home');
 })->middleware('auth')->name('home');
+

@@ -10,12 +10,11 @@ class LoginController extends Controller
 {
     public function showLoginForm()
     {
-        return view('auth.login'); // Return the login view
+        return view('auth.login');
     }
 
     public function login(Request $request)
     {
-        // Validate the incoming request
         $credentials = $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
