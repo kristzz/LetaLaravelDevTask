@@ -20,13 +20,10 @@ class LoginController extends Controller
             'password' => 'required|string',
         ]);
 
-        // Attempt to log the user in
         if (Auth::attempt($credentials)) {
-            // Authentication successful
             return redirect()->route('home');
         }
 
-        // Authentication failed, return with error
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);

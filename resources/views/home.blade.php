@@ -1,3 +1,3 @@
 <div>
-    <h1>Home sweet home</h1>
+    <h1>Home</h1>
 </div>
