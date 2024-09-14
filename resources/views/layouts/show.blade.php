@@ -1,51 +1,26 @@
+<head>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+</head>
+
 @extends('layouts.app')
 
 @section('content')
-
-    <form method="GET" action="{{ route('posts.index') }}" class="mb-4">
-        <div class="flex space-x-4">
-            <input type="text" name="search" placeholder="Search posts" value="{{ request('search') }}" class="border p-2 rounded">
-
-            <select name="category" class="border p-2 rounded">
-                <option value="">All Categories</option>
-                @foreach($post->categories as $category)
-                    <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
-                        {{ $category->name }}
-                    </option>
-                @endforeach
-            </select>
-
-            <button type="submit" class="bg-blue-500 text-white p-2 rounded">Search</button>
-        </div>
-    </form>
-
-
-    <h1>{{ $post->title }}</h1>
-    <p>Author: {{ $post->user->name }}</p>
-    <p>{{ $post->content }}</p>
-    <p>{{ $post->created_at }}</p>
-    <p>Categories: {{ $post->categories->pluck('name')->join(', ') }}</p>
+    <x-posts-component :post="$post" />
 
     @foreach($post->comments as $comment)
-        <div>
-            <p>{{ $comment->user->name }}: {{ $comment->content }}</p>
-
-            @if(Auth::id() == $comment->user_id)
-                <a href="{{ route('posts.comments.edit', [$post, $comment]) }}">Edit</a>
-
-                <form action="{{ route('posts.comments.destroy', [$post, $comment]) }}" method="POST" style="display:inline-block">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">Delete</button>
-                </form>
-            @endif
-        </div>
+        <x-comment-component :comment="$comment" :post="$post" />
     @endforeach
-
-    <h3>Add Comment</h3>
-    <form action="{{ route('posts.comments.store', $post) }}" method="POST">
-        @csrf
-        <textarea name="content" required></textarea>
-        <button type="submit">Add Comment</button>
-    </form>
+    <div class=" flex flex-col justify-center items-center mb-4 w-[100vw]">
+        <div class="flex rounded-2xl min-w-[60vw] max-w-[60vw]">
+            <form class="flex items-center" action="{{ route('posts.comments.store', $post) }}" method="POST">
+                @csrf
+                <textarea class=" border-2 border-blue-500 rounded-xl p-4" name="content" placeholder="Write a comment here" required></textarea>
+                <button type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
 @endsection
