@@ -14,7 +14,7 @@
     <p>No posts available.</p>
 @else
     @foreach($posts as $post)
-            <x-posts-component :post="$post" />
+        <x-posts-component :post="$post" />
     @endforeach
 @endif
 
