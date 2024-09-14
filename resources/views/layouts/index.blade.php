@@ -22,7 +22,6 @@
             <button type="submit" class="bg-blue-500 text-white p-2 rounded">Search</button>
 
         </div>
-
     </form>
 
     <a href="{{ route('posts.create') }}">Create Post</a>

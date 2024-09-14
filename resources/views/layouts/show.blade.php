@@ -5,7 +5,7 @@
     <form method="GET" action="{{ route('posts.index') }}" class="mb-4">
         <div class="flex space-x-4">
             <input type="text" name="search" placeholder="Search posts" value="{{ request('search') }}" class="border p-2 rounded">
-            
+
             <select name="category" class="border p-2 rounded">
                 <option value="">All Categories</option>
                 @foreach($post->categories as $category)
@@ -14,7 +14,7 @@
                     </option>
                 @endforeach
             </select>
-            
+
             <button type="submit" class="bg-blue-500 text-white p-2 rounded">Search</button>
         </div>
     </form>
@@ -23,6 +23,7 @@
     <h1>{{ $post->title }}</h1>
     <p>Author: {{ $post->user->name }}</p>
     <p>{{ $post->content }}</p>
+    <p>{{ $post->created_at }}</p>
     <p>Categories: {{ $post->categories->pluck('name')->join(', ') }}</p>
 
     @foreach($post->comments as $comment)

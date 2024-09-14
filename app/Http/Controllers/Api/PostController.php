@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Post;
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,15 +20,15 @@ class PostController extends Controller
         $query = Post::query();
 
         if ($request->filled('search')) {
-            $searchTerm = '%' . $request->search . '%';
-            $query->where(function($query) use ($searchTerm) {
+            $searchTerm = '%'.$request->search.'%';
+            $query->where(function ($query) use ($searchTerm) {
                 $query->where('title', 'like', $searchTerm)
                     ->orWhere('content', 'like', $searchTerm);
             });
         }
 
         if ($request->filled('category')) {
-            $query->whereHas('categories', function($q) use ($request) {
+            $query->whereHas('categories', function ($q) use ($request) {
                 $q->where('categories.id', $request->category);
             });
         }
@@ -40,11 +40,10 @@ class PostController extends Controller
         return view('layouts.index', compact('posts', 'categories'));
     }
 
-
-
     public function create()
     {
         $categories = Category::all();
+
         return view('layouts.create', compact('categories'));
     }
 
@@ -78,6 +77,7 @@ class PostController extends Controller
     {
         $this->authorize('update', $post);
         $categories = Category::all();
+
         return view('layouts.edit', compact('post', 'categories'));
     }
 

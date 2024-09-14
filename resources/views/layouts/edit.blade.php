@@ -20,8 +20,8 @@
             <label>Categories</label>
             <div id="category-buttons">
                 @foreach($categories as $category)
-                    <button type="button" 
-                            class="category-btn {{ in_array($category->id, $post->categories->pluck('id')->toArray()) ? 'selected' : '' }}" 
+                    <button type="button"
+                            class="category-btn {{ in_array($category->id, $post->categories->pluck('id')->toArray()) ? 'selected' : '' }}"
                             data-category-id="{{ $category->id }}">
                         {{ $category->name }}
                     </button>
@@ -42,11 +42,9 @@
                 let hiddenInput = document.querySelector('input[name="categories[]"][value="'+categoryId+'"]');
 
                 if (hiddenInput) {
-                    // If the category is already selected, remove it
                     hiddenInput.remove();
                     this.classList.remove('selected');
                 } else {
-                    // If the category is not selected, create a hidden input for it
                     hiddenInput = document.createElement('input');
                     hiddenInput.type = 'hidden';
                     hiddenInput.name = 'categories[]';

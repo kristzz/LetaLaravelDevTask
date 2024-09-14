@@ -30,7 +30,6 @@ class CommentController extends Controller
         return redirect()->route('posts.show', $post)->with('success', 'Comment added successfully.');
     }
 
-
     public function edit(Post $post, Comment $comment)
     {
         $this->authorize('update', $comment);

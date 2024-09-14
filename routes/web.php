@@ -1,12 +1,12 @@
 <?php
 
+use App\Http\Controllers\Api\CommentController;
+use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Api\PostController;
-use App\Http\Controllers\Api\CommentController;
-use App\Http\Controllers\Api\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +21,6 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
@@ -30,14 +29,11 @@ Route::post('/login', [LoginController::class, 'login']);
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-
 Route::get('/app', function () {
     return view('layouts/app');
 })->middleware('auth')->name('app');
 
-
 Route::resource('posts', PostController::class);
-
 
 Route::resource('posts.comments', CommentController::class)->except(['show']);
 
