@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\CommentController;
+use App\Http\Controllers\Api\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,3 +40,5 @@ Route::resource('posts', PostController::class);
 
 
 Route::resource('posts.comments', CommentController::class)->except(['show']);
+
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');

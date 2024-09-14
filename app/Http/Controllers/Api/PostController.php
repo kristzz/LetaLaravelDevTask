@@ -15,11 +15,32 @@ class PostController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::with(['categories', 'user'])->get();
-        return view('layouts.index', compact('posts'));
+        $query = Post::query();
+
+        if ($request->filled('search')) {
+            $searchTerm = '%' . $request->search . '%';
+            $query->where(function($query) use ($searchTerm) {
+                $query->where('title', 'like', $searchTerm)
+                    ->orWhere('content', 'like', $searchTerm);
+            });
+        }
+
+        if ($request->filled('category')) {
+            $query->whereHas('categories', function($q) use ($request) {
+                $q->where('categories.id', $request->category);
+            });
+        }
+
+        $posts = $query->with(['categories', 'user'])->get();
+
+        $categories = Category::all();
+
+        return view('layouts.index', compact('posts', 'categories'));
     }
+
+
 
     public function create()
     {

@@ -5,6 +5,9 @@
             <a href="{{ route('app') }}" class="text-white text-2xl font-bold">Home</a>
         </div>
         <div class="py-4">
+            <a href="{{ route('app') }}" class="text-white">Search</a>
+        </div>
+        <div class="py-4">
             <a href="{{ route('app') }}" class="text-white">Profile</a>
         </div>
     </div>
