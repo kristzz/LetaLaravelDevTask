@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Api\PostController;
-
+use App\Http\Controllers\Api\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,3 +36,6 @@ Route::get('/app', function () {
 
 
 Route::resource('posts', PostController::class);
+
+
+Route::resource('posts.comments', CommentController::class)->except(['show']);
