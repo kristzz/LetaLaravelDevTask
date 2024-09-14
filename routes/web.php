@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Api\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,4 @@ Route::get('/app', function () {
 })->middleware('auth')->name('app');
 
 
-Route::get('/posts', function () {
-    return view('layouts/posts');
-});
+Route::resource('posts', PostController::class);

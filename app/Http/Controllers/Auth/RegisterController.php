@@ -34,6 +34,6 @@ class RegisterController extends Controller
         auth()->login($user);
 
         // Redirect to home or any other page
-        return redirect()->route('home');
+        return redirect()->route('app');
     }
 }
