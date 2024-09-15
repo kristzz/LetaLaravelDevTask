@@ -15,6 +15,7 @@
         </div>
         <h1 class="text-xl">{{ $post->title }}</h1>
         <p>{{ $post->content }}</p>
+        <p class="text-sm opacity-70">{{ $post->comments_count }} {{ Str::plural('comment', $post->comments_count) }}</p>
         @if (Auth::id() === $post->user_id)
             <div class=" flex">
                 <a href="{{ route('posts.edit', $post->id) }}">

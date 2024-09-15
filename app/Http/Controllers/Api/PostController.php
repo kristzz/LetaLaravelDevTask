@@ -33,7 +33,7 @@ class PostController extends Controller
             });
         }
 
-        $posts = $query->with(['categories', 'user'])->get();
+        $posts = $query->with(['categories', 'user'])->withCount('comments')->get();
 
         $categories = Category::all();
 
