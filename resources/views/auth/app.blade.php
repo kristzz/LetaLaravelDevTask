@@ -7,17 +7,10 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <div class="w-[100vw] bg-slate-500">
-                @include('layouts.header')
-            </div>
-        </header>
-
         <main>
-            <div class="w-full">
+            <div class="w-[100vw]">
                 @yield('content')
             </div>
-
         </main>
     </div>
 </body>

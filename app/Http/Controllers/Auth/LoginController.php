@@ -21,7 +21,7 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('app');
+            return redirect()->route('posts.index');
         }
 
         return back()->withErrors([
