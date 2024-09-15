@@ -22,7 +22,7 @@
             @enderror
         </div>
 
-        <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Login</button>
+        <button type="submit" class="w-32 bg-blue-500 text-white py-2 px-4 rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Login</button>
 
         <div class="mt-4 text-center">
             <a href="{{ route('register') }}" class="text-blue-500 hover:text-blue-600 text-sm">Don't have an account? Register instead</a>

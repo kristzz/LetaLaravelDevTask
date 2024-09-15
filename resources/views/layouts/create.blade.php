@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Create Post</h1>
     <div class=" flex flex-col justify-center items-center my-4 w-[100vw]">
         <div class="flex flex-col border-l-2 border-t-2 border-blue-300 bg-slate-50 rounded-2xl min-w-[60vw] max-w-[60vw] p-4">
             <form action="{{ route('posts.store') }}" method="POST">

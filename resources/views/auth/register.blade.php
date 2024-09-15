@@ -37,7 +37,7 @@
             @enderror
         </div>
 
-        <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Register</button>
+        <button type="submit" class="w-32 bg-blue-500 text-white py-2 px-4 rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Register</button>
 
         <div class="mt-4 text-center">
             <a href="{{ route('login') }}" class="text-blue-500 hover:text-blue-600 text-sm">Already have an account? Login instead</a>
