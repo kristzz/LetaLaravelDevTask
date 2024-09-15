@@ -27,10 +27,11 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
-Route::get('/posts', [PostController::class, 'index'])->middleware('auth')->name('posts.index');
-Route::get('/profile', [ProfileController::class, 'show'])->middleware('auth')->name('profile.show');
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::resource('posts', PostController::class);
-
-Route::resource('posts.comments', CommentController::class)->except(['show']);
+    Route::resource('posts', PostController::class);
+    Route::resource('posts.comments', CommentController::class)->except(['show']);
+});
