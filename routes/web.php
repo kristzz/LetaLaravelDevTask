@@ -31,9 +31,6 @@ Route::get('/posts', [PostController::class, 'index'])->middleware('auth')->name
 Route::get('/profile', [ProfileController::class, 'show'])->middleware('auth')->name('profile.show');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-
 Route::resource('posts', PostController::class);
 
 Route::resource('posts.comments', CommentController::class)->except(['show']);
-
-
