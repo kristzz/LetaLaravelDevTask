@@ -60,7 +60,7 @@ npm run dev
 
 ### Accessing the Application
 
-After running the server, visit http://http://127.0.0.1:8000/ in your browser to access the application.
+After running the server, visit http://127.0.0.1:8000/ in your browser to access the application.
 
 
 ### There is a test account already made to login straight up but you can always register your own account
